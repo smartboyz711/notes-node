@@ -12,7 +12,12 @@ console.log('command:',command)
 console.log('Yargs',argv)
 
 if(command == 'add'){
-    notes.addNote(argv.title,argv.body)
+    var note = notes.addNote(argv.title,argv.body)
+    if(!_.isUndefined(note)){
+        console.log('Writed note Success : title = '+note.tite+', body = '+note.body)
+    }else{
+         console.log('title '+argv.title+' already in notes')
+    }
 }else if(command == 'list'){
     notes.getAll()
 }else if(command == 'read'){
