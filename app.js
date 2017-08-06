@@ -14,17 +14,21 @@ console.log('Yargs',argv)
 if(command == 'add'){
     var note = notes.addNote(argv.title,argv.body)
     if(!_.isUndefined(note)){
-        console.log('Writed note Success : title = '+note.tite+', body = '+note.body)
+        console.log('Writed note Success')
+        notes.logNote(note)
     }else{
         console.log('title '+argv.title+' already in notes')
     }
 }else if(command == 'list'){
-    notes.getAll()
+    var allNotes = notes.getAll()
+    console.log('Printing '+allNotes.length+' notes')
+    allNotes.forEach((note) => notes.logNote(note))
+
 }else if(command == 'read'){
     var foundnote = notes.getNote(argv.title)
     if(foundnote){
         console.log('Note Found')
-         console.log('title = '+foundnote.title+', body = '+foundnote.body)
+        notes.logNote(foundnote)
     }else{
         console.log('Note not Found')
     }
@@ -37,5 +41,7 @@ if(command == 'add'){
 else {
     console.log('Command not recognized')
 }
+
+
 
 
