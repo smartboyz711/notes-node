@@ -36,7 +36,10 @@ var getNote = (title) => {
     console.log('Getting note',title)
 }
 var removeNote = (title) => {
-    console.log('Remove note',title)
+    var notes = fetchNotes()
+    var notDuplicatNotes = notes.filter((obj) => obj.title !== title)
+    saveNotes(notDuplicatNotes)
+    return notes.length !== notDuplicatNotes.length
 }
 
 module.exports = {

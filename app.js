@@ -16,14 +16,16 @@ if(command == 'add'){
     if(!_.isUndefined(note)){
         console.log('Writed note Success : title = '+note.tite+', body = '+note.body)
     }else{
-         console.log('title '+argv.title+' already in notes')
+        console.log('title '+argv.title+' already in notes')
     }
 }else if(command == 'list'){
     notes.getAll()
 }else if(command == 'read'){
     notes.getNote(argv.title)
 }else if(command == 'remove'){
-    notes.removeNote(argv.title)
+    var remove = notes.removeNote(argv.title)
+    var message = remove ? 'Note was removed' : 'title '+argv.title+' not exists'
+    console.log(message)
 }
 else {
     console.log('Command not recognized')
