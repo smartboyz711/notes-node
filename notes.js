@@ -22,7 +22,7 @@ var addNote = (title,body) => {
         title,
         body
     }
-    var duplicatNotes = notes.filter((array) => array.title === title)
+    var duplicatNotes = notes.filter((obj) => obj.title === title)
     if(duplicatNotes.length === 0){
         notes.push(note)
         saveNotes(notes)
