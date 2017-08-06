@@ -21,7 +21,14 @@ if(command == 'add'){
 }else if(command == 'list'){
     notes.getAll()
 }else if(command == 'read'){
-    notes.getNote(argv.title)
+    var foundnote = notes.getNote(argv.title)
+    if(foundnote){
+        console.log('Note Found')
+         console.log('title = '+foundnote.title+', body = '+foundnote.body)
+    }else{
+        console.log('Note not Found')
+    }
+
 }else if(command == 'remove'){
     var remove = notes.removeNote(argv.title)
     var message = remove ? 'Note was removed' : 'title '+argv.title+' not exists'
